@@ -41,9 +41,11 @@ try{
 	echo "<br>" . ($r>0?"Insert successful":"Insert failed") . "<br>";
 	
 	//TODO select query using bindable :username is where clause
-	$select_query="select * from TestUsers where username = :username";
+	$select_query="select * from `TestUsers` where username = :username";
+	$stmt = $db->prepare($select_query);
+	$r = $stmt->execute(array(":username"=> "Bohn Bobe"));
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	$result = $stmt->fetch();
 	echo "<br><pre>" . var_export($result, true) . "</pre><br>";
 }
 catch(Exception $e){
