@@ -24,13 +24,15 @@ $check = is_numeric($number1) && is_numeric($number2);
 
 if($check){
 
-echo (int)$number1 +(int)$number2 ; 
+echo "Here's an addition of two numbers: " . ((int)$number1+(int)$number2) ; 
+echo "<br>" . "Here's a concatenation of two variables " .  $number1 . $number2; 
+
 
 }
 else
 {
 
-echo "One or both of these are not numbers";
+echo "One or both of these are not numbers, or you have set no values in the address bar. The variables are number1 and number2 .  ";
 
 }
 
