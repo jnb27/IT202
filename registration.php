@@ -90,8 +90,8 @@ input { border: 1px solid black; }
 
 	<select name="dropdown">
 		<option value="">Select One</option>
-		<option value="1">Basic</option>
-		<option value="2">Pro</option>
+		<option value="Basic">Basic Bot</option>
+		<option value="Pro">Pro Bot</option>
 	</select>
 
 <input type="submit" value="Try it"/>
