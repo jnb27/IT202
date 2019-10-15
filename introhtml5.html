@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function queryParam(){
+		var params = new URLSearchParams(location.search);
+		if(params.has('page')){
+			var page = params.get('page');
+			var ele = document.getElementById(page);
+			if(ele){
+				let home = document.getElementById('home');
+				let about = document.getElementById('about');
+				home.style.display="none";
+				about.style.display = "none";
+				ele.style.display = "block";
+			}
+		}
+		else{
+			let home = document.getElementById('home');
+			home.style.display = "block";
+		}
+	}
+</script>
+</head>
+<body style= "background-color: #8cffcb;">
+<body onload="queryParam();">
+	<header>
+		<nav>
+			<!--Create route for Home-->
+			<a href="?page=home">Home |</a>
+			<!--Create route for About-->
+			<a href="?page=about">About |</a>
+		</nav>
+	</header>
+	<div id="home">
+		This is home
+	</div>
+	<div id="about">
+		<!-- About page using HTML5 Semantics-->
+		
+		<h1> This is gonna be a header </h1>
+		<p> Test paragraph </p>
+		
+	</div>
+	<footer></footer>
+</body>
+</html>
