@@ -35,7 +35,7 @@ function myValidation(inputEle, checkValue){
 <input name="email" type="email" placeholder="Enter your email"/>
 <input name="emailconfirm" type="email" placeholder="Confirm your email" onchange="myValidation(this,email.value)"/>
 <input name="password" type="password" placeholder="Enter your password"/>
-<input name="passwordconfirm" type="password" placeholder="Confirm password"/>
+<input name="passwordconfirm" type="password" placeholder="Confirm password" onchange="myValidation(this,password.value)"/>
 <input name="username" placeholder="Create username"/>
 
 <input type="submit" value="Submit"/>
