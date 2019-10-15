@@ -7,7 +7,7 @@ function myValidation(inputEle, checkValue){
 	let vid = "validation." + name;
 	let vele = document.getElementById(vid);
 	let value = inputEle.value;
-	if(value === checkValue){
+	if(value == checkValue){
 		if(vele){
 			vele.remove();
 		}
@@ -20,6 +20,9 @@ function myValidation(inputEle, checkValue){
 		}
 		vele.innerText = name + " has an invalid value";
 	}
+	if(value == ""){
+		vele.innerText = name + " is empty, please fill.";
+}
 	return false;
 }
 
