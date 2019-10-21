@@ -48,17 +48,20 @@ function init() {
     }
 }
 
+// Resets Score and Ball Postion
 function reset(){
 resetBall();
 rightScore = 0;
 leftScore = 0;
 }
 
+//Supposed to Erase ball when changing anything about it
 function destroyBall(){
  ball = makeRect(ball.x, ball.y, 100, 100, ballSpeed, '#ffffff');
     drawables.push(ball);
 }
 
+// Creates larger ball
 function biggerBall(){
     destroyBall();
     ballSize = 15;
@@ -67,6 +70,7 @@ function biggerBall(){
     resetBall();
 }
 
+//Creates Smaller Ball
 function smallerBall(){
 	destroyBall();
     ballSize = 5;
@@ -75,6 +79,7 @@ function smallerBall(){
     resetBall();
 }
 
+//Creates Biggest Ball
 function bigBOYE(){
 	destroyBall();
     ballSize = 55;
@@ -173,29 +178,36 @@ function makeRect(x, y, width, height, speed, color) {
     };
 }
 
+//"Destroys" original Slider in order to change color
 function Rekt(){
 leftPaddle = makeRect(25, leftPaddle.y, paddleWidth, canvas.height, 5, '#ffffff');
  drawables.push(leftPaddle);
 }
 
+//Makes a new Slider with color changed
 function makeRect2(color) {
    Rekt();
    leftPaddle= makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, color); 
    drawables.push(leftPaddle);
    resetBall();
 }
+
+//Makes Slider Smaller
 function ShortRect(){
 	Rekt();
    leftPaddle= makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, 50, 5, '#ba7b88'); 
    drawables.push(leftPaddle);
    resetBall();
 }
+
+//Makes Slider Longer
 function LongRect(){
 	Rekt();
    leftPaddle= makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, 150, 5, '#eba87c'); 
    drawables.push(leftPaddle);
    resetBall();
 }
+
 function doAI() {
     if (ball.x >= canvas.width * .6) {
         let paddleHalf = paddleHeight / 2;
