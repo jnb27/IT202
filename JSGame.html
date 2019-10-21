@@ -47,6 +47,42 @@ function init() {
         canvas.focus();
     }
 }
+
+function reset(){
+resetBall();
+rightScore = 0;
+leftScore = 0;
+}
+
+function destroyBall(){
+ ball = makeRect(ball.x, ball.y, 100, 100, ballSpeed, '#ffffff');
+    drawables.push(ball);
+}
+
+function biggerBall(){
+    destroyBall();
+    ballSize = 15;
+    ball = makeRect(0, 0, ballSize, ballSize, ballSpeed, '#000000');
+    drawables.push(ball);
+    resetBall();
+}
+
+function smallerBall(){
+	destroyBall();
+    ballSize = 5;
+    ball = makeRect(0, 0, ballSize, ballSize, ballSpeed, '#000000');
+    drawables.push(ball);
+    resetBall();
+}
+
+function bigBOYE(){
+	destroyBall();
+    ballSize = 55;
+    ball = makeRect(0, 0, ballSize, ballSize, ballSpeed, '#000000');
+    drawables.push(ball);
+    resetBall();
+}
+
 function resetBall() {
     ball.x = canvas.width / 2 - ball.w / 2;
     ball.y = canvas.height / 2 - ball.w / 2;
@@ -148,7 +184,18 @@ function makeRect2(color) {
    drawables.push(leftPaddle);
    resetBall();
 }
-
+function ShortRect(){
+	Rekt();
+   leftPaddle= makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, 50, 5, '#ba7b88'); 
+   drawables.push(leftPaddle);
+   resetBall();
+}
+function LongRect(){
+	Rekt();
+   leftPaddle= makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, 150, 5, '#eba87c'); 
+   drawables.push(leftPaddle);
+   resetBall();
+}
 function doAI() {
     if (ball.x >= canvas.width * .6) {
         let paddleHalf = paddleHeight / 2;
@@ -245,9 +292,31 @@ function gameLoop() {
     }
 }
 </script>
-<button type="button" onclick="makeRect2('#c6eb34')">Green</button>
+<!--Color Changers-->
+<p> Color Changers: </p>
+<button type="button" onclick="makeRect2('#26cc1b')">Green</button>
 <button type="button" onclick="makeRect2('#ff99cc')">Pink</button>
+<button type="button" onclick="makeRect2('#a337c4')">Purple</button>
+<button type="button" onclick="makeRect2('#5edce6')">Blue</button>
 <button type="button" onclick="makeRect2('#ffffff')">Invisible</button>
+<br></br>
+
+<!--Ball Modifiers-->
+<p> Ball Modifiers </p>
+<button type="button" onclick="biggerBall()">Big Ball</button>
+<button type="button" onclick="smallerBall()">Small Ball</button>
+<button type="button" onclick="bigBOYE()">Big Boi</button>
+<br></br>
+
+
+<!-- Slider Modifier-->
+<p>Slider Modifiers</p>
+<button type="button" onclick="ShortRect()">Shorter Slider</button>
+<button type="button" onclick="LongRect()">Longer Slider</button>
+
+<!--Reset Ball Button-->
+<button type="button" onclick="reset()">Reset Game</button>
+
 </head>
 <body onload="init();">
 	<a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
