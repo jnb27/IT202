@@ -174,9 +174,6 @@ function moveBall() {
     // Move the ball
     ball.x += ball.sX;
     ball.y += ball.sY;
-	//Hopefully changes color
-	if(ball.x > 2){
-		ball.color='#60f542';}
   // Bounce the ball off the top/bottom
     if (ball.y < 0 || ball.y + ball.h > canvas.height) {
         ball.sY *= -1;
@@ -234,6 +231,9 @@ function gameLoop() {
     }
 }
 </script>
+<button type="button" onclick="leftPaddle.color=('green")">Green</button>
+<button type="button" onclick="alert('It works!')">Pink</button>
+<button type="button" onclick="alert('It works!')">Invisible</button>
 </head>
 <body onload="init();">
 	<a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
