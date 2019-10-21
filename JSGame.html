@@ -136,6 +136,19 @@ function makeRect(x, y, width, height, speed, color) {
         }
     };
 }
+
+function Rekt(){
+leftPaddle = makeRect(25, leftPaddle.y, paddleWidth, canvas.height, 5, '#ffffff');
+ drawables.push(leftPaddle);
+}
+
+function makeRect2(color) {
+   Rekt();
+   leftPaddle= makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, color); 
+   drawables.push(leftPaddle);
+   resetBall();
+}
+
 function doAI() {
     if (ball.x >= canvas.width * .6) {
         let paddleHalf = paddleHeight / 2;
@@ -217,6 +230,7 @@ function erase() {
     context.fillStyle = '#FFFFFF';
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
+
 function gameLoop() {
     erase();
     movePaddle();
@@ -231,9 +245,9 @@ function gameLoop() {
     }
 }
 </script>
-<button type="button" onclick="leftPaddle.color=('green")">Green</button>
-<button type="button" onclick="alert('It works!')">Pink</button>
-<button type="button" onclick="alert('It works!')">Invisible</button>
+<button type="button" onclick="makeRect2('#c6eb34')">Green</button>
+<button type="button" onclick="makeRect2('#ff99cc')">Pink</button>
+<button type="button" onclick="makeRect2('#ffffff')">Invisible</button>
 </head>
 <body onload="init();">
 	<a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
