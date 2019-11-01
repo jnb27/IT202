@@ -1,8 +1,8 @@
 <?php
 
-include('loginscript.php');
+include('LoginScript.php');
 if(isset($_SESSION['login-user'])){
-header("location: profile.php");  }
+header("location: Profile.php");  }
 ?>
 
 <!DOCTYPE html>
