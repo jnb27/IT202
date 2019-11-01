@@ -1,0 +1,28 @@
+<form method='POST'>
+<input type="text" name="username"/> <input type="password" name="password">
+<input type="submit" value="Login"/>
+</form>
+
+<?php
+	if(isset($response)) {echo $response;}
+	if(isset($_SESSION['response'])){ echo $_SESSION['response'];}
+
+?>
+
+<!--somewhere -->
+
+<?php
+
+$conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+
+if(isset($_POST['username'])){
+	$username = $_POST['username'];
+	$password = $_POST['password']; //get values
+	require("conf.php");
+	$db = new PDO($conn_string, $username, $password); //connect to DB
+	//check for user and/or password
+
+	echo $username . $password;
+	echo $response;
+}
+?>
