@@ -26,7 +26,7 @@ if($stmt->fetch()){
 $_SESSION['login_user'] = $username;
 header("location: Profile.php");
 }
-
+}
 }
 ?>
  
