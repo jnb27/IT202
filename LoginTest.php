@@ -1,7 +1,7 @@
 <?php
 
 include('LoginScript.php');
-if(isset($_SESSION['login-user'])){
+if(isset($_SESSION['login_user'])){
 header("location: Profile.php");  }
 ?>
 
