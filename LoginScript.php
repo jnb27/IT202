@@ -21,7 +21,15 @@ $stmt= $conn->prepare($query);
 $stmt->bind_param("ss", $username2, $password2);
 $stmt->execute();
 $stmt->bind_result($username2, $password2);
+
+if($stmt->num_rows < 0)
+{
+    $error = "Username or Password is invalid";
+}
+
 $stmt->store_result();
+
+
 
 if($stmt->fetch())
 $_SESSION['login_user'] = $username2;

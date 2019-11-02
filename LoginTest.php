@@ -9,14 +9,14 @@ header("location: Profile.php");  }
 <html>
 <head>
 <title>Login Form Milestone</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="style2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="login">
 <h2> Login </h2>
 <form action = "" method="post">
 <label>Username: </label>
-<input id="name" name="username" placeholder="uesrname" type="text">
+<input id="name" name="username" placeholder="Username" type="text">
 <label>Password: </label>
 <input id="password" name="password" placeholder="Enter Password" type="password">
 <br></br>
