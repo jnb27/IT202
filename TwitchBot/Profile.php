@@ -10,7 +10,7 @@ header("location: LoginTest.php");
 <html>
 <head>
 <title> A Home Page</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="style2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="profile">
