@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
 else{
   $username2 = $_POST['username'];
   $password2 = $_POST['password'];
+  
   $secret = password_hash($password2, PASSWORD_BCRYPT);
     
   $conn = mysqli_connect("$host", "$username", "$password", "$database");
@@ -24,12 +25,22 @@ else{
   $stmt->store_result();
 
 
+//Change this if statement to use password verify
+//Make sure all users are remade with hashed passwords
+
 if($stmt->fetch()){
   $_SESSION['login_user'] = $username2;
   header("location: Profile.php");}
   else{
   $error = "Invalid Username or Password";}
   }
+  
+/*if(password_verify($secret, $whatsinthedatabase)){
+  $_SESSION['login_user'] = $username2;
+  header("location: Profile.php");}
+  else{
+  $error = "Invalid Username or Password";}
+  }*/
 }
 ?>
 
