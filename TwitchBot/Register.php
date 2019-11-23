@@ -1,10 +1,16 @@
 <?php
-      session_start();
-      require('conf.php');
+session_start();
+ini_set('display_errors',1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+<?php
+       require('conf.php');
   
       if(isset($_POST['register'])){
           
-          if(!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['confirm']) ){
+          if(!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['confirm']) && !empty($_POST['email']) ){
           
           $newUser = $_POST['username'];
           $newPass = $_POST['password'];
@@ -13,45 +19,48 @@
           
           if($newPass === $confpass)
             {
-               //Check if username exists if not, insert and hash password 
-               
+               //If connection fails error message will be sent
+               try{
                $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
-               $db = new PDO($conn_string, $username, $password);
-               
-               $sql =  "SELECT COUNT('Username') FROM 'BotUsers' WHERE 'Username' = :username LIMIT 1";
+               $db = new PDO($conn_string, $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+               }
+               catch (Exception $e){
+                   echo $e->getMessage();}
+                
+               //try to get the username and check if it exists    
+               $sql =  "SELECT Username FROM BotUsers WHERE Username = :username LIMIT 1";
                $stmt = $db->prepare($sql);
                
-               $stmt->bindParam(':username', $newUser);
-               $stmt->execute();
+               $stmt->execute(array(':username' => $newUser));
                
-               $results = $stmt->fetch(PDO::FETCH_ASSOC);
+               //Ideally this should return true or false
+               $results = $stmt->fetchColumn();
                
-               if($results > 0)
+               //If this fires then it means our check is working
+               if($results)
                {echo 'User taken'; 
                  exit();}
                
+               
+               //Otherwise insert into the database
                $hash = password_hash($confpass, PASSWORD_BCRYPT);
                
-               $sql = "INSERT INTO BotUsers (Username, Password, Email, Coins) VALUES (:username, :password, :email, 100)";
+               $sql = "INSERT INTO 'BotUsers' (Username, Password, Email, Coins) VALUES (:username, :password, :email, 100)";
                $stmt = $db->prepare($sql);
                
-               $stmt->bindParam(':username', $newUser);
-               $stmt->bindParam(':password', $hash);
-               $stmt->bindParam('email', $email);
+               $result = $stmt->execute(array(':username' => $newUser, ':password' => $hash, ':email' => $email));
                
-               $result = $stmt->execute();
-               
-               if($result){
-                   echo 'It worked';
-               }
-          
+                if($result)
+                {echo 'Successful Login';}
           
             }
           
               }
+              else{
+              echo 'Fill in all fields';}
               
           }
-        
+       
 
 ?>
 <!DOCTYPE html>
@@ -61,12 +70,22 @@
     </head>
     <body>
         <h1>Register</h1>
-        <form action="register.php" method="post">
+        <form action="Register.php" method="post">
+            
             <label for="username">Username</label>
             <input type="text" id="username" name="username"><br>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"><br>
+            
             <label for="password">Password</label>
-            <input type="text" id="password" name="password"><br>
+            <input type="password" id="password" name="password"><br>
+            
+            <label for="confirm">Confirm Password</label>
+            <input type="password" id="confirm" name="Confirm Password">
+           
             <input type="submit" name="register" value="Register"></button>
+        
         </form>
     </body>
 </html>
