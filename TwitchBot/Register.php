@@ -5,16 +5,44 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <h1>Register</h1>
+        <form action="Register.php" method="POST">
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"><br>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"><br>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"><br>
+            
+           
+            <input type="password" name="cpassword" placeholder="Confirm Password">
+           
+            <input type="submit" name="register" value="Register"></button>
+        
+        </form>
+    </body>
+</html>
+
+
 <?php
        require('conf.php');
   
       if(isset($_POST['register'])){
           
-          if(!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['confirm']) && !empty($_POST['email']) ){
+          if(!empty($_POST['username'])  && !empty($_POST['password']) && !empty($_POST['confirm']) && !empty($_POST['email']) ){
           
           $newUser = $_POST['username'];
           $newPass = $_POST['password'];
-          $confpass = $_POST['confirm'];
+          $confpass = $_POST['cpassword'];
           $email = $_POST['email'];
           
           if($newPass === $confpass)
@@ -28,7 +56,7 @@ error_reporting(E_ALL);
                    echo $e->getMessage();}
                 
                //try to get the username and check if it exists    
-               $sql =  "SELECT Username FROM BotUsers WHERE Username = :username LIMIT 1";
+              /* $sql =  "SELECT Username FROM BotUsers WHERE Username = :username LIMIT 1";
                $stmt = $db->prepare($sql);
                
                $stmt->execute(array(':username' => $newUser));
@@ -39,19 +67,21 @@ error_reporting(E_ALL);
                //If this fires then it means our check is working
                if($results)
                {echo 'User taken'; 
-                 exit();}
+                 exit();} */
                
-               
+               try{
                //Otherwise insert into the database
                $hash = password_hash($confpass, PASSWORD_BCRYPT);
                
-               $sql = "INSERT INTO 'BotUsers' (Username, Password, Email, Coins) VALUES (:username, :password, :email, 100)";
+               $sql = "INSERT INTO BotUsers (Username, Password, Email, Coins) VALUES (:username, :password, :email, 100)";
                $stmt = $db->prepare($sql);
                
-               $result = $stmt->execute(array(':username' => $newUser, ':password' => $hash, ':email' => $email));
+               $stmt->execute(array(':username' => $newUser, ':password' => $hash, ':email' => $email));
+               }
+               catch (Exception $e){
+                 echo $e->getMessage();}
                
-                if($result)
-                {echo 'Successful Login';}
+               
           
             }
           
@@ -63,31 +93,6 @@ error_reporting(E_ALL);
        
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Register</title>
-    </head>
-    <body>
-        <h1>Register</h1>
-        <form action="Register.php" method="post">
-            
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"><br>
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email"><br>
-            
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"><br>
-            
-            <label for="confirm">Confirm Password</label>
-            <input type="password" id="confirm" name="Confirm Password">
-           
-            <input type="submit" name="register" value="Register"></button>
-        
-        </form>
-    </body>
-</html>
+
 
 
