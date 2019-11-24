@@ -38,7 +38,7 @@ error_reporting(E_ALL);
   
       if(isset($_POST['register'])){
           
-          if(!empty($_POST['username'])  && !empty($_POST['password']) && !empty($_POST['confirm']) && !empty($_POST['email']) ){
+          if(!empty($_POST['username'])  && !empty($_POST['password']) && !empty($_POST['cpassword']) && !empty($_POST['email']) ){
           
           $newUser = $_POST['username'];
           $newPass = $_POST['password'];
@@ -77,6 +77,10 @@ error_reporting(E_ALL);
                $stmt = $db->prepare($sql);
                
                $stmt->execute(array(':username' => $newUser, ':password' => $hash, ':email' => $email));
+               
+               $_SESSION['login_user'] = $newUser;
+                header("location: Profile.php");
+               
                }
                catch (Exception $e){
                  echo $e->getMessage();}
