@@ -1,9 +1,6 @@
 <?php
 
 include('session.php');
-if(!isset($_SESSION['login_user'])){
-header("location: LoginTest.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +13,8 @@ header("location: LoginTest.php");
 <div id="profile">
 <b id="welcome">Welcome: <i><?php echo $login_session; ?></i></b>
 <b id="logout"><a href="Logout.php"> Log Out</a></b>
+<br><b id="HighLow"><a href="HL.php">High Low Game </a></b></br>
+<b id="HighLow"><a href="DON.php">Double or Nothing Game </a></b>
 </div>
 </body>
 </html>
