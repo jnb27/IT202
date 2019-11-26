@@ -36,14 +36,14 @@ $CurrentCoins = $row['Coins'];
 var NumStart;
 var NextNum; 
 var CoinsEarned = 10;
-var B = document.getElementById("Claim");
+
 
 function StartGame()
 {
 NumStart = Math.floor(Math.random() * 101);
 document.getElementById("NumHolder").innerHTML = NumStart;
 document.getElementById("NextNumber").innerHTML = 'Your number';
-B.style.visibility = "hidden";
+document.getElementById("Claim").style.visibility = "hidden";
 }
 
 function HigherGuess()
@@ -58,16 +58,18 @@ function HigherGuess()
       {
       //When win add coins
       
-        NumStart = null;
+        
         alert("You won!");
         document.getElementById("NumHolder").innerHTML = NumStart;
-        
+        NumStart = null;
+        document.getElementById("Claim").style.visibility = "visible";
         
       }
       else{
-        NumStart = null;
+       
         alert("Sorry you lost.");
         document.getElementById("NumHolder").innerHTML = NumStart;
+         NumStart = null;
       }
     }
 }
@@ -84,22 +86,25 @@ function LowerGuess()
       {
         //When win add coins
         
-        NumStart = null;
+        
         alert("You won!");
         document.getElementById("NumHolder").innerHTML = NumStart;
+        NumStart = null;
+        document.getElementById("Claim").style.visibility = "visible";
         
       }
       else{
-        NumStart = null;
+        
         alert("Sorry you lost.");
         document.getElementById("NumHolder").innerHTML = NumStart;
-        
+        NumStart = null;
       }
     }
 }
 
 function TakeWinnings()
 {
+
 //Add coins Earned to coins in database
 let xhttp = new XMLHttpRequest();
 
@@ -112,15 +117,15 @@ xhttp.onreadystatechange = function(){
 
 xhttp.open("POST", "UpdateCoins.php",true);
 xhttp.send();
-
+document.getElementById("Claim").style.visibility = "hidden";
 }
 </script>
 
 <button type="button" onclick="StartGame()">Start</button>
 <button type="button" onclick="HigherGuess()">Higher</button>
 <button type="button" onclick="LowerGuess()">Lower</button>
-<div id="Claim">
-<p> Peepoep </p>
-<button type="button" onclick="TakeWinnings()" >Claim Coins</button>
-</div>
+
+<button id="Claim" type="button" onclick="TakeWinnings()" >Claim Coins</button>
+
+
 </html>

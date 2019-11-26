@@ -33,7 +33,7 @@ xhttp.onreadystatechange = function(){
 
 xhttp.open("POST", "UpdateCoins.php",true);
 xhttp.send();
-
+document.getElementById("Claim").style.visibility = "hidden";
 }
 
 function BetHeads()
@@ -75,5 +75,6 @@ function BetTails()
 
 <button type="button" onclick="BetHeads()">Heads</button>
 <button type="button" onclick="BetTails()">Tails</button>
+<button id="Claim" type="button" onclick="TakeWinnings()" >Take Winnings</button>
 
 </html>
