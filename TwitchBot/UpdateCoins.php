@@ -22,5 +22,15 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $login_session = $row['Username'];
 $CurrentCoins = $row['Coins'];
 
+//If win a game give coins
+
+$CoinsWon = 10;
+
+$CoinTotal = $CoinsWon + $CurrentCoins;
+
+$update = "UPDATE `jnb27`.`BotUsers` SET `Coins` = '$CoinTotal' WHERE `BotUsers`.`Username` = '$user_check'";
+$result2 = $db->prepare($update);
+$result2->execute();
+
 
 ?>

@@ -13,6 +13,7 @@ include('session.php');
 <div id="profile">
 <b id="welcome">Welcome: <i><?php echo $login_session; ?></i></b>
 <b id="logout"><a href="Logout.php"> Log Out</a></b>
+<b id="Coins">Your Coins: <i><?php echo $CurrentCoins; ?></i></b>
 <br><b id="HighLow"><a href="HL.php">High Low Game </a></b></br>
 <b id="HighLow"><a href="DON.php">Double or Nothing Game </a></b>
 </div>
