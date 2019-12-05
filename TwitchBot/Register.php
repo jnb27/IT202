@@ -35,7 +35,11 @@ error_reporting(E_ALL);
 
 <?php
        require('conf.php');
+       require('session.php');
   
+    if(isset($_SESSION['login_user']))
+      {header("location: Profile.php");}
+      
       if(isset($_POST['register'])){
           
           if(!empty($_POST['username'])  && !empty($_POST['password']) && !empty($_POST['cpassword']) && !empty($_POST['email']) ){

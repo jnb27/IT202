@@ -13,9 +13,47 @@ include('session.php');
 <div id="profile">
 <b id="welcome">Welcome: <i><?php echo $login_session; ?></i></b>
 <b id="logout"><a href="Logout.php"> Log Out</a></b>
-<b id="Coins">Your Coins: <i><?php echo $CurrentCoins; ?></i></b>
+<p id="Coins"><strong>Your Coins: <i><?php echo $CurrentCoins; ?></i></strong></p>
 <br><b id="HighLow"><a href="HL.php">High Low Game </a></b></br>
 <b id="HighLow"><a href="DON.php">Double or Nothing Game </a></b>
+
+<br></br>
+<p> <strong> Daily Coin Bonus! </strong> </p>
+<button id="Claim" type="button" onclick="TakeWinnings()" >Claim Coins</button>
+
+
+
+
+
+<p> Edit Profile </p>
+
+
+
+
+
 </div>
 </body>
+
+<script>
+
+function TakeWinnings()
+{
+
+//Add coins Earned to coins in database
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200)
+          {
+          document.getElementById("AjaxTest").innerHTML = this.responseText;
+          }
+      }
+
+xhttp.open("POST", "UpdateCoins.php",true);
+xhttp.send();
+document.getElementById("Claim").style.visibility = "hidden";
+}
+
+</script>
+
 </html>

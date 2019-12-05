@@ -32,9 +32,16 @@
               $results = $stmt->fetch(PDO::FETCH_ASSOC);
               
               if($results && count($results) > 0){
-                  //$hashedPassword = password_hash($loginPass, PASSWORD_BCRYPT);
+                  
                     if(password_verify($loginPass, $results['Password'])){
                     $_SESSION['login_user'] = $loginUser;
+                    
+                          if($results['isAdmin'] == 1)
+                              {
+                              $_SESSION['isAdmin'] = true;
+                              header("location: Admin.php");
+                              }
+                    
                     header("location: Profile.php");}
                     else
                     {
