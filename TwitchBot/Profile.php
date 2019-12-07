@@ -14,22 +14,22 @@ include('session.php');
 <b id="welcome">Welcome: <i><?php echo $login_session; ?></i></b>
 <b id="logout"><a href="Logout.php"> Log Out</a></b>
 <p id="Coins"><strong>Your Coins: <i><?php echo $CurrentCoins; ?></i></strong></p>
+
+
 <br><b id="HighLow"><a href="HL.php">High Low Game </a></b></br>
 <b id="HighLow"><a href="DON.php">Double or Nothing Game </a></b>
-
 <br></br>
-<p> <strong> Daily Coin Bonus! </strong> </p>
+<a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/About.php"> About Page </a>
+
+<p> <strong> Free Coin Bonus! </strong> </p>
 <button id="Claim" type="button" onclick="TakeWinnings()" >Claim Coins</button>
 
 
-
-
-
-<p> Edit Profile </p>
-
-
-
-
+<p> <b> Edit Profile Background  </b> </p>
+<input type="button" onclick="changeBack('red');" value="Red">
+<input type="button" onclick="changeBack('blue');" value="Blue">
+<input type="button" onclick="changeBack('green');" value="Green">
+<input type="button" onclick="changeBack('purple');" value="Purple">
 
 </div>
 </body>
@@ -52,6 +52,14 @@ xhttp.onreadystatechange = function(){
 xhttp.open("POST", "UpdateCoins.php",true);
 xhttp.send();
 document.getElementById("Claim").style.visibility = "hidden";
+}
+
+
+function changeBack(color)
+{
+
+document.body.style.background = color;
+
 }
 
 </script>

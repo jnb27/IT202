@@ -36,7 +36,9 @@
                     if(password_verify($loginPass, $results['Password'])){
                     $_SESSION['login_user'] = $loginUser;
                     
-                          if($results['isAdmin'] == 1)
+                         echo var_export($results, true); 
+                         
+                         if($results['isAdmin'])
                               {
                               $_SESSION['isAdmin'] = true;
                               header("location: Admin.php");

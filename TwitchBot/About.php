@@ -3,12 +3,24 @@
 <!DOCTYPE html>
 <html>
 
-<h1> Welcome to blah </h1>
+<h1> Welcome to the very basic game page. </h1>
 
 
-<p> Here I will type why I made this and whatever </p>
+<p> I made these webpages for a class project and I was having some fun with it. Originally this idea was supposed to be a Twitch Bot but after some consideration I changed it up to a game site. As you can see the remains of the TwitchBot in the url. </p>
 
-<p> Here I type current available featuers </p>
+<p> So far the website has two working games that reward coins. </p>
+
+<p> The first game is a simple HighLow Game where you guess if a randomly generated number will be higher or lower <p>
+
+
+<p> The second game is a Double or Nothing game which could lead to pretty high coin payouts. <p>
+
+
+<p> You can play them if you're logged in ! </p>
+
+<a href= "https://web.njit.edu/~jnb27/IT202/TwitchBot/HL.php">High Low</a>
+
+<a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/DON.php">Double or Nothing</a>
 
 
 
