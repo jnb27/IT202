@@ -26,7 +26,7 @@
         try{
               $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
 			        $db = new PDO($conn_string, $username, $password);
-              $stmt = $db->prepare("SELECT Username, Password FROM BotUsers where Username = :username LIMIT 1");
+              $stmt = $db->prepare("SELECT * FROM BotUsers where Username = :username LIMIT 1");
               $stmt -> execute(array(":username"=>$loginUser));
               
               $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -44,7 +44,12 @@
                               header("location: Admin.php");
                               }
                     
-                    header("location: Profile.php");}
+                    if($results['isAdmin'] == 0)
+                    {
+                    header("location: Profile.php");
+                    }
+                    
+                    }
                     else
                     {
                       $error = "Invalid Username or Password";
@@ -63,7 +68,7 @@
           } 
       }
                   
-                  //}
+                  
    }                     
                   
                   

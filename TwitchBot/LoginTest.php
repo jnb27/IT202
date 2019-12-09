@@ -1,8 +1,8 @@
 <?php
 
 include('PDOScript.php');
-if(isset($_SESSION['login_user'])){
-header("location: Profile.php");  }
+//if(isset($_SESSION['login_user'])){
+//header("location: Profile.php");  }
 ?>
 
 <!DOCTYPE html>
