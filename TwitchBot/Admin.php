@@ -19,14 +19,23 @@ include('session.php');
 <a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/About.php"> About Page </a>
 <br></br>
 
-<textarea id = "Announcements" rows = "4" cols = "50"> Post Announcement here</textarea>
+<a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/SetAnnounce.php"> Change Announcement </a>
+<br></br>
+
 
 <p> <b> Edit Profile Background  </b> </p>
 <input type="button" onclick="changeBack('red');" value="Red">
 <input type="button" onclick="changeBack('blue');" value="Blue">
 <input type="button" onclick="changeBack('green');" value="Green">
 <input type="button" onclick="changeBack('purple');" value="Purple">
+<br></br>
 
+<form action = "" method="post">
+<input id="name" name="username" placeholder="Username" type="text">
+<input id="MoreCoin" name="MoreCoins" placeholder="Edit Coins" type="number">
+
+<input name="submit" type="submit" value="Confirm">
+</form>
 
 </div>
 </body>
@@ -53,9 +62,34 @@ $into = "SELECT Username, Coins FROM BotUsers";
 $result = $db->prepare($into);
 $result->execute(array());
 
-$row = $result->fetch(PDO::FETCH_ASSOC);
+$row = $result->fetchAll(PDO::FETCH_ASSOC);
 
-echo $row['Username'];
-echo $row['Coins'];
+echo "<br><pre>" . var_export($row, true) . "</pre><br>";
+
+
+if(isset($_POST['username']) && isset($_POST['MoreCoins']) && empty($_POST['LessCoins']))
+{
+
+//So technically this was supposed to add coins but I only needed admins to edit coin amounts not differentiate between + / -
+
+$user_check = $_POST['username'];
+
+$into = "SELECT * FROM BotUsers WHERE Username = :user_check";
+$result2 = $db->prepare($into);
+$result2->execute(array(":user_check"=>$user_check));
+$row2 = $result->fetch(PDO::FETCH_ASSOC);
+
+$CurrentCoins = $row2['Coins']; 
+$coinsAdd = $_POST['MoreCoins'];
+
+$newTotal = $CurrentCoins + $coinsAdd;
+
+$update = "UPDATE `jnb27`.`BotUsers` SET `Coins` = '$newTotal' WHERE `BotUsers`.`Username` = '$user_check'";
+$result3 = $db->prepare($update);
+$result3->execute();
+
+
+}
+
 
 ?>
