@@ -38,7 +38,7 @@
                     
                          echo var_export($results, true); 
                          
-                         if($results['isAdmin'])
+                         if($results['isAdmin'] == 1)
                               {
                               $_SESSION['isAdmin'] = true;
                               header("location: Admin.php");

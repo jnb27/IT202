@@ -35,7 +35,7 @@ error_reporting(E_ALL);
 
 <?php
        require('conf.php');
-       require('session.php');
+       
   
     if(isset($_SESSION['login_user']))
       {header("location: Profile.php");}

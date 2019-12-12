@@ -1,5 +1,13 @@
 <!-- This is gonna be a very basic about page with a home and redirects to login and Registration-->
 
+</html>
+
+<?php 
+
+include('conf.php');
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -23,44 +31,15 @@
 <a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/DON.php">Double or Nothing</a>
 
 
-
-
-
-
-
-
-
-
-
-
 <a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/LoginTest.php">Login</a>
 
 <a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/Register.php">Register</a>
 
+<button onclick="window.location.href = 'https://web.njit.edu/~jnb27/IT202/TwitchBot/Profile.php';">Back To Profile</button>
+
+<p> <i>  <b> Announcement ! </i> </b> </p>
+<p> <?php echo $announcement; ?> </p>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</html>

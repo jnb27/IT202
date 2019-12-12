@@ -28,8 +28,10 @@ alert('<?php echo $announcement; ?>');
 </html>
 
 <?php 
+//session_start();
+include('conf.php');
 
+//Use Global variable thingy
 $announcement = $_POST['Announcement'];
 
-echo $announcement;
 ?>

@@ -1,6 +1,12 @@
 <?php
 
 include('session.php');
+
+    if(!isset($_SESSION['login_user']))
+    {
+        header("location: LoginTest.php");
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +25,10 @@ include('session.php');
 <br><b id="HighLow"><a href="HL.php">High Low Game </a></b></br>
 <b id="HighLow"><a href="DON.php">Double or Nothing Game </a></b>
 <br></br>
+
+<b id="RPS"><a href="RPS.php">Rock Paper Scissors </a></b>
+<br></br>
+
 <a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/About.php"> About Page </a>
 
 <p> <strong> Free Coin Bonus! </strong> </p>

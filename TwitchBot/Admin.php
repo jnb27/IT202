@@ -22,6 +22,13 @@ include('session.php');
 <a href="https://web.njit.edu/~jnb27/IT202/TwitchBot/SetAnnounce.php"> Change Announcement </a>
 <br></br>
 
+<br><b id="HighLow"><a href="HL.php">High Low Game </a></b></br>
+<b id="HighLow"><a href="DON.php">Double or Nothing Game </a></b>
+<br></br>
+
+<b id="RPS"><a href="RPS.php">Rock Paper Scissors </a></b>
+<br></br>
+
 
 <p> <b> Edit Profile Background  </b> </p>
 <input type="button" onclick="changeBack('red');" value="Red">

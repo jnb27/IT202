@@ -1,8 +1,11 @@
 <?php
 
 include('PDOScript.php');
-//if(isset($_SESSION['login_user'])){
-//header("location: Profile.php");  }
+if(isset($_SESSION['login_user']) && $_SESSION['isAdmin']){
+header("location: Admin.php");  }
+
+if(isset($_SESSION['login_user']) && !($_SESSION['isAdmin']) ){
+header("location: Profile.php");  }
 ?>
 
 <!DOCTYPE html>

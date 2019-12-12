@@ -7,10 +7,6 @@ $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
 $db = new PDO($conn_string, $username, $password);
 
 
-if(!isset($_SESSION['login_user'])){
-header("location: LoginTest.php");
-}
-
 $user_check = $_SESSION['login_user'];
 
 $into = "SELECT * FROM BotUsers WHERE Username = :user_check";

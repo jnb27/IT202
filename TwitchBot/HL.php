@@ -19,7 +19,7 @@ $CurrentCoins = $row['Coins'];
 <head>
 <title>High Low Minigame</title>
 </head>
-<body>
+<body onload="hidethis()" >
 <h1> Welcome to the High Low MiniGame </h1>
 <h2> Instructions </h2>
 <p> This game is very simple, once you hit start a number will be randomly generated.</p>
@@ -119,6 +119,12 @@ xhttp.open("POST", "UpdateCoins.php",true);
 xhttp.send();
 document.getElementById("Claim").style.visibility = "hidden";
 }
+
+function hidethis()
+{
+  document.getElementById("Claim").style.visibility = "hidden";
+}
+
 </script>
 
 <button type="button" onclick="StartGame()">Start</button>

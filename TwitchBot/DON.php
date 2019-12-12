@@ -3,7 +3,7 @@
 <head>
 <title>Double Or Nothing</title>
 </head>
-<body>
+<body onload="hidethis()" >
 <h1> Welcome to the Double Or Nothing </h1>
 <h2> Instructions </h2>
 <p> This game is very simple, first you bet 5 coins, and then a coinflip will be done</p>
@@ -86,6 +86,11 @@ function BetTails()
      coinsEarned = 0;
      LostCoins();
     }
+}
+
+function hidethis()
+{
+  document.getElementById("Claim").style.visibility = "hidden";
 }
 
 </script>
